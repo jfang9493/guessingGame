@@ -9,16 +9,38 @@ public class lib {
         System.out.println("Hello. What is your name?");
         String name = input.nextLine();
         int inputNum = 0;
-        while (inputNum != 1 || inputNum != 2 || inputNum != 3 || inputNum != 4)
+        System.out.println("Welcome, " + name + ". Type 1 if you want to guess my number, or type 2 if you want me to guess your number.");
+        int pickGame = input.nextInt();
+        while ((pickGame!=1) && (pickGame!=2))
         {
-            System.out.println("Welcome, " + name + ". Please pick a difficulty of 1, 2, 3, or 4.");
-            inputNum = (input.nextInt());
-            int maxGuess = 0;
-            if (inputNum == 1) maxGuess = 10;
-            if (inputNum == 2) maxGuess = 100;
-            if (inputNum == 3) maxGuess = 1000;
-            if (inputNum == 4) maxGuess = 10000;
+            System.out.println("Sorry" + name + ", I didn't understand that. Type 1 if you want to guess my number, or type 2 if you want me to guess your number.");
+            pickGame = input.nextInt();
         }
-        System.out.println("Now would like me to guess a number or would you like to guess one," + name + ".");
+
+        if (pickGame == 1) //objective 1
+        {
+            System.out.println("Try giving me a number between 1 and 100" + name + ".");
+            Scanner input2 = new Scanner(System.in);
+            double randomNum = Math.random();
+            while (input2.nextDouble()!= randomNum)
+            {
+                if (input2.nextDouble() == randomNum)
+                {
+                    System.out.println("Congratulations " + name + ", you have guess the number correctly.");
+                }
+                if (input2.nextDouble() > randomNum)
+                {
+                    System.out.println("The number I am thinking of is less than the number you guessed. Try again" + name + "!");
+                }
+                if(input2.nextDouble() < randomNum)
+                {
+                    System.out.println("The number I am thinking of is greater than the number you guessed. Try again" + name + "!");
+                }
+            }
+        }
+        else //objective 2
+        {
+            return;
+        }
     }
 }
