@@ -16,6 +16,15 @@ public class lib {
             pickGame = input.nextInt();
         }
         int maxNum = 100;
+        System.out.println("Now what difficulty do you want to play on " + name + "? Please type 1, 2, 3, or 4 for difficulty; 1 being the easiest and 4 being the hardest difficulty.");
+        int pickDiff = input.nextInt();
+        if (pickDiff >=1 && pickDiff <=4)
+        {
+            if (pickDiff == 1) maxNum = 10;
+            if (pickDiff == 2) maxNum = 100;
+            if (pickDiff == 3) maxNum = 1000;
+            if (pickDiff == 4) maxNum = 10000;
+        }
         int numOfGuesses = 0;
         if (pickGame == 1) //objective 1
         {
@@ -56,7 +65,23 @@ public class lib {
                 System.out.println("Sorry " + name + ", that number is not in the range for me to guess. Please pick another number");
                 playerNum = input.nextInt();
             }
+            int botGuess = (int)Math.ceil(maxNum/2);
+            int minNum = 1;
+            boolean botWin = false;
+            int botCorrect = input.nextInt();
+            while (botWin == false)
+            {
+                System.out.println("I guess " + botGuess + ". Is your number lower, higher, or correct?");
 
+                if (botCorrect.equals("lower"))
+                {
+                    botGuess -= Math.ceil(botGuess / 2);
+                }
+                if(botCorrect.equals("higher"))
+                {
+                    botGuess += Math.ceil(botGuess / 2);
+                }
+            }
         }
     }
 }
